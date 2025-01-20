@@ -13,8 +13,7 @@ app.use(express.urlencoded({extended: true}))
 
 app.post("/confirm-payment", async (req, res)=>{
         try{
-            let jwk = await warp.arweave.wallets.generate()
-            let {txHash, contractId} = req.body
+            let {txHash, contractId, jwk} = req.body
             const tags = [
                 { name: "Input", value: {txHash, function: "topup"}.toString() },
                 { name: "Contract-Label", value: "M3ters" },

@@ -1,0 +1,26 @@
+{
+  "name": "m3ter-arweave-server",
+  "version": "1.0.0",
+  "description": "Server application to route data upload to arweave from mobile apps",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "arweave",
+    "m3tering",
+    "smart",
+    "meters"
+  ],
+  "author": "Onyeka David",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "warp-contracts": "^1.4.45"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

@@ -30,6 +30,8 @@ app.post("/confirm-payment", async (req, res)=>{
                 txHash
             }, undefined, tags)
 
+            console.log("drywrite result", dryWriteResult)
+
             if(dryWriteResult.type == "error"){
                 return res.status(400).json({message: dryWriteResult.errorMessage})
             }

@@ -11,6 +11,19 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.get("/get-details/:contractId", async (req, res)=>{
+    try{
+        let contractId = req.params.contractId
+        let arweaveContractState = await warp.contract(contractId).readState()
+        if(!arweaveContractState.cachedValue.state) return res.status(400).json({message: `state not found for arweave contract: ${contractId}`})
+
+        return res.status(200).json({message: "state fetched successfully", data: arweaveContractState.cachedValue.state})
+    }catch(err){
+        console.log("error for data called", err)
+        return res.status(500).json({message: "an error occured"})
+    }
+})
+
 app.post("/confirm-payment", async (req, res)=>{
         try{
             let jwk = await warp.arweave.wallets.generate()
